@@ -7,7 +7,7 @@
   */
   function authenticate_user($user_email, $user_psw){
     try{
-      $db = new PDO('mysql:host=localhost;dbname=tweb_progetto_finale_develop', 'root', '');
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       //user email escape and quote
       $user_email = $db->quote($user_email);
@@ -31,4 +31,33 @@
       die();
     }
   }
+
+  /*
+  * Funzione per registrare un nuovo utente, crea connessione con db e inserisce utente con dati passati
+  * params: nickname, email, psw del nuovo utente da aggiungere
+  * return: true se tutto ok, false altrimenti
+  */
+  function register_new_user($nickname, $email, $psw) {
+    //conntect with db
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //quote dei parametri
+      $nickname = $db->quote($nickname);
+      $email = $db->quote($email);
+      $psw = $db->quote($psw);
+      //query
+      $insert_query = "INSERT INTO users (email, nickname, psw) VALUES ($email, $nickname, $psw)";
+      $insert_result = $db->query($insert_query);
+      if(!$insert_result){
+        return("The query is wrong");
+      }else{
+        return("ok");
+      }
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
 ?>
