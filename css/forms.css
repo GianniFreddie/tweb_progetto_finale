@@ -1,0 +1,28 @@
+.card {
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 15%;
+  border-radius: 8px;
+}
+
+.content-wrapper{
+  height: 92%;
+}
+
+.orange-button {
+  background-color: #FFA500;
+  color: #ffffff;
+}
+
+.action-link-container {
+  text-align: right;
+}
+.register-card {
+  margin-top: 10%;
+}

@@ -1,0 +1,64 @@
+.logo {
+  margin-top: 20px;
+  margin-bottom: 4%;
+}
+
+.logo img {
+  height: 70px;
+  width: 70px;
+}
+
+.logo h1 {
+  color: #ffffff;
+  display: inline-block;
+}
+
+.container .row p {
+  color: #C0C0C0;
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+}
+
+.navigation-links a {
+  font-size: 20px;
+  color: #000000;
+  background-color: #C0C0C0;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  padding: 7px;
+  border-radius: 7px;
+}
+
+.navigation-links .col-md-2 {
+  margin-top: 20px;
+}
+
+.navigation-links a:hover {
+  text-decoration: none;
+}
+
+.navigation-links a:focus {
+  text-decoration: none;
+  border-width: 0px;
+}
+
+.content-wrapper {
+  background-image: url("/tweb_progetto_finale/images/home-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80%;
+  background-position: top;
+  overflow: hidden;
+}
+
+.details {
+  padding-top: 20px;
+}
+
+footer {
+  height: 8%;
+  background-color: #FF8C00;
+}
