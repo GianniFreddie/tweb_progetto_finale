@@ -24,7 +24,7 @@
 						<h2 class = "card-title text-center">Register</h2>
 						<form action = "/tweb_progetto_finale/register.php" method="post">
 							<div class="form-group">
-								<input type = "text" class = "form-control" name = "nickname" placeholder="Nickname">
+								<input type = "text" class = "form-control" name = "nickname" placeholder="Nickname"> <?php // TODO: controllo nickname in ajax ?>
 							</div>
 							<div class="form-group">
 								<input type = "email" class = "form-control" name = "email" placeholder="Email">
@@ -41,7 +41,7 @@
 									<input type="submit" class = "btn orange-button" value = "Register">
 								</div>
 								<div class="col-md-2 col-md-offset-8 action-link-container">
-									<a href = "/tweb_progetto_finale/login.html" class = "action-link btn orange-button">Log in</a>
+									<a href = "/tweb_progetto_finale/login.php" class = "action-link btn orange-button">Log in</a>
 								</div>
 							</div>
 
