@@ -1,3 +1,11 @@
+<?
+	session_start();
+	$print = var_dump($_SESSION["current_user_id"]);
+	if(isset($_SESSION["current_user_id"])){
+		//redirect
+		header('Location: http://localhost:3005/tweb_progetto_finale/feeds.php');
+	}
+?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,6 +14,7 @@
 		<link rel = "stylesheet" href = "/tweb_progetto_finale/css/home.css" />
 	</head>
 	<body>
+		<?= $print ?>
 		<div class = "content-wrapper">
 			<div class = "container">
 				<div class = "logo">

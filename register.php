@@ -1,6 +1,4 @@
 <?
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL | E_STRICT);
 	//includo utility dove c'e funzione che registra nuovo user
 	include 'utilities.php';
 	$there_are_parameters = !empty($_REQUEST['nickname']) && !empty($_REQUEST['email']) && !empty($_REQUEST['psw']);

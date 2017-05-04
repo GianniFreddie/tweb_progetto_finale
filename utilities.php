@@ -7,20 +7,22 @@
   * return: true se tutto ok, messaggio di errore altrimenti
   */
   function authenticate_user($user_email, $user_psw){
-    $user = search_user_by_email($user_email);
-    if(!$user){//query sbagliata
+    $user_stmt = search_user_by_email($user_email);
+    if(!$user_stmt){//query sbagliata
       return("The user research query is wrong");
-    }else if($user->rowCount() == 0){//user non trovato
+    }else if($user_stmt->rowCount() == 0){//user non trovato
       return("Email not found");
     }
+    //recupero info relative all'utente
+    $user = $user_stmt->fetch();
     //controllo password
-    $db_user_psw = $user->fetch()["psw"];
+    $db_user_psw = $user["psw"];
     if($user_psw == $db_user_psw){
       //create session
       session_start();
       //save data
-      $_SESSION["current_user_id"] = $user->fetch()["id"];
-      $_SESSION["current_user_nickname"] = $user->fetch()["nickname"];
+      $_SESSION["current_user_id"] = $user["id"];
+      $_SESSION["current_user_nickname"] = $user["nickname"];
       return "ok";
     }else{
       return("The password is wrong");
@@ -50,13 +52,15 @@
         //close connection
         $db = NULL;
         //recupera l'user appena salvato per inserire il suo id in sessione
-        $user = search_user_by_email($email);
-        if($user && $user->rowCount() > 0){
+        $user_stmt = search_user_by_email($email);
+        if($user_stmt && $user_stmt->rowCount() > 0){
+          //prendo info user
+          $user = $user_stmt->fetch();
           //create session
           session_start();
           //save data
-          $_SESSION["current_user_id"] = $user->fetch()["id"];
-          $_SESSION["current_user_nickname"] = $user->fetch()["nickname"];
+          $_SESSION["current_user_id"] = $user["id"];
+          $_SESSION["current_user_nickname"] = $user["nickname"];
           return("ok");
         }
 
