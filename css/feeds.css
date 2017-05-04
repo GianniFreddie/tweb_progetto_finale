@@ -1,0 +1,18 @@
+.navbar-nav li.active {
+  background-color: #f8f8f8;
+  border-top: 3px solid #FF8C00;
+}
+
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar img {
+  height: 50px;
+  width: 50px;
+}
+
+.navbar-brand p {
+  display: inline;
+}
