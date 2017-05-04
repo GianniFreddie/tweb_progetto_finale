@@ -1,10 +1,16 @@
 <?
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL | E_STRICT);
 	//includo utility dove c'e funzione che registra nuovo user
 	include 'utilities.php';
 	$there_are_parameters = !empty($_REQUEST['nickname']) && !empty($_REQUEST['email']) && !empty($_REQUEST['psw']);
 	$result = NULL;
 	if($there_are_parameters == true) {
 		$result = register_new_user($_REQUEST['nickname'], $_REQUEST['email'], $_REQUEST['psw']);
+		if($result == "ok"){
+			//redirect
+			header('Location: http://localhost:3005/tweb_progetto_finale/feeds.php');
+		}
 	}
 ?>
 <html>

@@ -1,4 +1,5 @@
 <?
+  include'queries.php';
   /*
   * Funzione che esegue la routine di autenticazione, cerca lo user se esiste e controlla la psw
   * params: user_email, l'email inserita nel form
@@ -6,29 +7,23 @@
   * return: true se tutto ok, messaggio di errore altrimenti
   */
   function authenticate_user($user_email, $user_psw){
-    try{
-      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //user email escape and quote
-      $user_email = $db->quote($user_email);
-      //cerco l'utente
-      $user_search_query = "SELECT psw FROM users WHERE email = $user_email";
-      $user_research_result = $db->query($user_search_query);
-      if(!$user_research_result){//query sbagliata
-        return("The user research query is wrong");
-      }else if($user_research_result->rowCount() == 0){//user non trovato
-        return("Email not found");
-      }
-      //controllo password
-      $db_user_psw = $user_research_result->fetch()["psw"];
-      if($user_psw == $db_user_psw){
-        return "ok";
-      }else{
-        return("The password is wrong");
-      }
-    } catch(PDOException $e){
-      return($e->getMessage());
-      die();
+    $user = search_user_by_email($user_email);
+    if(!$user){//query sbagliata
+      return("The user research query is wrong");
+    }else if($user->rowCount() == 0){//user non trovato
+      return("Email not found");
+    }
+    //controllo password
+    $db_user_psw = $user->fetch()["psw"];
+    if($user_psw == $db_user_psw){
+      //create session
+      session_start();
+      //save data
+      $_SESSION["current_user_id"] = $user->fetch()["id"];
+      $_SESSION["current_user_nickname"] = $user->fetch()["nickname"];
+      return "ok";
+    }else{
+      return("The password is wrong");
     }
   }
 
@@ -43,17 +38,51 @@
       $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       //quote dei parametri
-      $nickname = $db->quote($nickname);
-      $email = $db->quote($email);
+      $nickname_quoted = $db->quote($nickname);
+      $email_quoted = $db->quote($email);
       $psw = $db->quote($psw);
       //query
-      $insert_query = "INSERT INTO users (email, nickname, psw) VALUES ($email, $nickname, $psw)";
+      $insert_query = users_insert_query($email_quoted, $nickname_quoted, $psw);
       $insert_result = $db->query($insert_query);
       if(!$insert_result){
         return("The query is wrong");
       }else{
-        return("ok");
+        //close connection
+        $db = NULL;
+        //recupera l'user appena salvato per inserire il suo id in sessione
+        $user = search_user_by_email($email);
+        if($user && $user->rowCount() > 0){
+          //create session
+          session_start();
+          //save data
+          $_SESSION["current_user_id"] = $user->fetch()["id"];
+          $_SESSION["current_user_nickname"] = $user->fetch()["nickname"];
+          return("ok");
+        }
+
       }
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
+  /*
+  * Cerca un utente in base al suo indirizzo email, essendo univoco si può effettuare la ricerca in base a questo parametro
+  * param: $email, indirizzo email utente
+  * return: PDOStatement risultato della ricerca
+  */
+  function search_user_by_email($email) {
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //quote email
+      $email = $db->quote($email);
+      //query
+      $research_query = search_by_email_query($email);
+      //execute
+      $results = $db->query($research_query);
+      return $results;
     }catch(PDOException $e){
       return($e->getMessage());
       die();
