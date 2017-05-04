@@ -55,7 +55,7 @@
 									<input type="submit" class = "btn orange-button" value = "Login">
 								</div>
 								<div class="col-md-2 col-md-offset-8 action-link-container">
-									<a href = "/tweb_progetto_finale/register.html" class = "btn orange-button">Register</a>
+									<a href = "/tweb_progetto_finale/register.php" class = "btn orange-button">Register</a>
 								</div>
 							</div>
 
