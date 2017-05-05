@@ -1,5 +1,8 @@
 .navbar-nav li.active {
-  background-color: #f8f8f8;
+  border-top: 3px solid #FF8C00;
+}
+
+.navbar-nav li:hover {
   border-top: 3px solid #FF8C00;
 }
 
@@ -9,10 +12,32 @@
 }
 
 .navbar img {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
 }
 
-.navbar-brand p {
+.navbar-brand > h1 {
   display: inline;
+  vertical-align: middle;
+}
+
+.profile-info {
+  height: ;
+  width: 30%;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+  position: fixed;
+  left: 40px;
+}
+
+/* annullo css bootstrap che non mi piacciono */
+
+.navbar-brand {
+  float: none !important;
+}
+
+.navbar-brand > img {
+  display: inline !important;
+  margin-right: 15px;
 }

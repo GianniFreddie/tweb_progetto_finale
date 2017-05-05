@@ -19,4 +19,14 @@
     return "INSERT INTO users (email, nickname, psw) VALUES ($email, $nickname, $psw)";
   }
 
+  /*
+  * Restituisce la query per cercare un elemento in una tabella qualsiasi in base al suo id
+  * param: $id, valore dell'id da inserire nella query
+  * param: $table, il nome della tabella in cui effettuare la ricerca
+  * return: query di ricerca per id
+  */
+  function search_by_id_query($id, $table){
+    return "SELECT * FROM $table WHERE id = $id";
+  }
+
 ?>

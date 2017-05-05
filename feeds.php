@@ -1,6 +1,6 @@
 <?
   session_start();
-  $user_nickname = $_SESSION["current_user_nickname"];
+  include 'utilities.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
     <nav class = "navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-           <a class="navbar-brand" href="#"><img src = "/tweb_progetto_finale/images/site-icon.png"/><p>Nerd organizer</p></a>
+           <a class="navbar-brand" href="#"><img src = "/tweb_progetto_finale/images/site-icon.png"/><h1>Nerd organizer</h1></a>
         </div>
         <div class = "collapse navbar-collapse pull-right">
           <ul class = "nav navbar-nav">
@@ -28,5 +28,28 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+      <div class = "profile-info">
+        <!-- prendo info utente -->
+        <?
+          $user_id = $_SESSION["current_user_id"];
+          $user_stmt = search_by_user_id($user_id);
+          if($user_stmt && $user_stmt->rowCount() > 0){
+            $user = $user_stmt->fetch();
+          }else{
+            print("ERRORE");
+          }
+        ?>
+        <h3>@<?= $user["nickname"] ?></h3>
+        <div class="row">
+          <div class="col-md-3 text-right ">
+            <p>Name:</p>
+          </div>
+          <div class="col-md-6">
+            <p> - </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
