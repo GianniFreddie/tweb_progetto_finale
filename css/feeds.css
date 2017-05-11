@@ -22,7 +22,7 @@
 }
 
 .profile-info {
-  width: 30%;
+  width: 20%;
   border-width: 1px;
   border-color: #000000;
   border-style: solid;
@@ -30,7 +30,7 @@
 }
 
 .time-info {
-  width: 30%;
+  width: 20%;
   border-width: 1px;
   border-color: #000000;
   border-style: solid;
@@ -41,6 +41,13 @@
 .dropdown-menu {
   position: absolute;
   left: 20px;
+}
+
+.main-content{
+  width: 60%;
+  position: absolute;
+  top: 15%;
+  left: 30%;
 }
 
 /* annullo css bootstrap che non mi piacciono */

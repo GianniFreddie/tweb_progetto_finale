@@ -29,4 +29,31 @@
     return "SELECT * FROM $table WHERE id = $id";
   }
 
+  /*
+  * Query per elencare tutte le serie tv presenti nel db
+  * param:
+  * return: query che lista tutte le serie tv presenti nel db
+  */
+  function tv_series_index_query(){
+    return "SELECT * FROM tv_series";
+  }
+
+  /*
+  * Query per cercare tutte le stagioni collegate ad una serie tv
+  * param: serie_id, id della serie tv
+  * return: [PDOStatement] tutte le stagioni legate alla serie
+  */
+  function tv_serie_seasons($serie_id) {
+    return "SELECT * FROM tv_series_seasons WHERE serie_id = $serie_id";
+  }
+
+  /*
+  * Query per contare le puntate associate ad un singolo telefilm
+  * param: serie_id, l'id della serie tv
+  * return: [PDOStatement] di tutte le puntate associate al telefilm
+  */
+  function tv_series_episodes($serie_id) {
+    return "SELECT * FROM tv_series_episodes WHERE season_id IN ({tv_series_seasons($serie_id)})";
+  }
+
 ?>
