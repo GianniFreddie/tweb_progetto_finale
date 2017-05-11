@@ -2,7 +2,7 @@
   border-top: 3px solid #FF8C00;
 }
 
-.navbar-nav li:hover {
+.navbar-nav > li:hover {
   border-top: 3px solid #FF8C00;
 }
 
@@ -22,13 +22,25 @@
 }
 
 .profile-info {
-  height: ;
   width: 30%;
   border-width: 1px;
   border-color: #000000;
   border-style: solid;
-  position: fixed;
-  left: 40px;
+  padding: 10px;
+}
+
+.time-info {
+  width: 30%;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 20px;
 }
 
 /* annullo css bootstrap che non mi piacciono */
