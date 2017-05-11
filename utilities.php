@@ -93,4 +93,25 @@
     }
   }
 
+  /*
+  * Cerca l'user in base al suo id
+  * param: $user_id
+  * return: PDOStatement risultato della ricerca
+  */
+  function search_by_user_id($user_id){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //query
+      $search_query = search_by_id_query($user_id, 'users');
+      //esegui query
+      $result = $db->query($search_query);
+      return $result;
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+
+    }
+  }
+
 ?>

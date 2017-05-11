@@ -1,0 +1,55 @@
+.navbar-nav li.active {
+  border-top: 3px solid #FF8C00;
+}
+
+.navbar-nav > li:hover {
+  border-top: 3px solid #FF8C00;
+}
+
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar img {
+  height: 60px;
+  width: 60px;
+}
+
+.navbar-brand > h1 {
+  display: inline;
+  vertical-align: middle;
+}
+
+.profile-info {
+  width: 30%;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+  padding: 10px;
+}
+
+.time-info {
+  width: 30%;
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 20px;
+}
+
+/* annullo css bootstrap che non mi piacciono */
+
+.navbar-brand {
+  float: none !important;
+}
+
+.navbar-brand > img {
+  display: inline !important;
+  margin-right: 15px;
+}
