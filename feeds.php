@@ -1,5 +1,6 @@
 <?
   session_start();
+  include('queries.php');
   include 'utilities.php';
 ?>
 <!DOCTYPE html>

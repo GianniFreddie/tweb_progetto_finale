@@ -1,5 +1,4 @@
 <?
-  include'queries.php';
   /*
   * Funzione che esegue la routine di autenticazione, cerca lo user se esiste e controlla la psw
   * params: user_email, l'email inserita nel form

@@ -18,6 +18,64 @@
   }
 
   /*
+  * Prende l'ultimo id della tabella tv_series per dare nome a immagine di copertina
+  * param:
+  * return: id ultimo record di tv_series
+  */
+  function tv_series_last_id(){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $last_id_query = last_tv_series_id_query();
+      $result = $db->query($last_id_query);
+      return $result->fetch();
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
+  /*
+  * Create di una nuova serie tv
+  * param: title, titolo della serie tv
+  * param: cover_image, path dell'immagine di copertina della serie tv
+  * param: creator_id, id dell'ideatore della serie tv
+  */
+  function create_tv_serie($title, $creator_id){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //quote parametri
+      $title_quoted = $db->quote($title);
+      $insert_query = insert_tv_serie($title_quoted, $creator_id);
+      $db->query($insert_query);
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
+  /*
+  * Modifica il campo cover_image con un nuovo valore
+  * param: $id, l'id del record da modificare
+  * param: $cover_image, valore da inserire
+  * return:
+  */
+  function mod_tv_serie_cover_image($id, $cover_image){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //quote param
+      $cover_image_quoted = $db->quote($cover_image);
+      $update_query = update_cover_image_query($id, $cover_image_quoted);
+      $db->query($update_query);
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
+  /*
   * Conta il numero di stagioni della serie tv
   * params: serie_id, id della serie tv di cui contare le stagioni
   * return: numero di stagioni della serie
@@ -47,6 +105,24 @@
       $episodes_query = tv_series_episodes($serie_id);
       $episodes = $db->query($episodes_query);
       return($episodes->rowCount());
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
+  /*
+  * Id e nome dei creatori di serie tv per la select del form di inserimento nuova serie tv
+  * param:
+  * return: [PDOStatement] con id e nome ideatori serie tv
+  */
+  function tv_series_creators() {
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $select_query = select_tv_series_creators();
+      $tv_series_creators = $db->query($select_query);
+      return $tv_series_creators;
     }catch(PDOException $e){
       return($e->getMessage());
       die();

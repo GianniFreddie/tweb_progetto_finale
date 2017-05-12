@@ -1,5 +1,6 @@
 <?
   session_start();
+  include '../queries.php';
   include 'tv_series_controller.php';
   include '../utilities.php';
   $tv_series = series_index();

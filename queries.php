@@ -56,4 +56,43 @@
     return "SELECT * FROM tv_series_episodes WHERE season_id IN ({tv_series_seasons($serie_id)})";
   }
 
+  /*
+  * Query per prendere i creatori di serie tv
+  * param:
+  * return: query di selezione creatori serie tv
+  */
+  function select_tv_series_creators() {
+    return "SELECT * FROM tv_series_creators";
+  }
+
+  /*
+  * Create di una nuova serie tv
+  * param: $title, titolo gia quoted
+  * param: $cover_image, path dell'immagine di copertina già quoted
+  * param: $creator_id, id dell'ideatore della serie tv
+  * return: query di inserimento serie tv
+  */
+  function insert_tv_serie($title, $creator_id) {
+    return "INSERT INTO tv_series (title, creator_id) VALUES ($title, $creator_id)";
+  }
+
+  /*
+  * Prende ultimo id della tabella tv_Series
+  * param:
+  * return: query di selezione utlimo id
+  */
+  function last_tv_series_id_query(){
+    return "SELECT max(id) FROM tv_series";
+  }
+
+  /*
+  * Query di update per cover_image di una singola tv_serie_seasons
+  * param: $id, l'id della serie da modificare
+  * param: $cover_image, nuovo valore da inserire
+  * return: Query di modifica cover_image
+  */
+  function update_cover_image_query($id, $cover_image){
+    return "UPDATE tv_series SET cover_image = $cover_image WHERE id = $id";
+  }
+
 ?>

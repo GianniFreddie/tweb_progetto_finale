@@ -1,5 +1,6 @@
 <?
 	//includo il file che contiene la funzione di login
+	include 'queries.php'
 	include 'utilities.php';
 	//variabile che conterrà eventuali errori dei dati del form
 	$form_error = NULL;
