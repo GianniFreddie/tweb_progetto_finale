@@ -95,4 +95,14 @@
     return "UPDATE tv_series SET cover_image = $cover_image WHERE id = $id";
   }
 
+  /*
+  * Query per inserire un nuovo record nella tabella tv_series_seasons
+  * param: $serie_id, id della serie a cui appartiene la stagione
+  * param: $title, titolo della stagione già quoted
+  * return: Query insert
+  */
+  function insert_season_query($serie_id, $title){
+    return "INSERT INTO tv_series_seasons (serie_id, title) VALUES ($serie_id, $title) ";
+  }
+
 ?>

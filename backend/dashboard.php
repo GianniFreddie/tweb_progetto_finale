@@ -10,5 +10,6 @@
   </head>
   <body>
     <a href = "/tweb_progetto_finale/tv_series/form.php" >Tv Series</a>
+    <a href = "/tweb_progetto_finale/tv_series_seasons/form.php" >Tv Series seasons</a>
   </body>
 </html>
