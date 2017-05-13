@@ -20,4 +20,22 @@
     }
   }
 
+  /*
+  * Join tra tabella episodi e tabella serie tv
+  * param:
+  * return: [PDOStatement] join tra stagione e serie tv
+  */
+  function seasons_series_join(){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $join_query = seasons_series_join_query();
+      $results = $db->query($join_query);
+      return $results;
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
 ?>

@@ -105,4 +105,13 @@
     return "INSERT INTO tv_series_seasons (serie_id, title) VALUES ($serie_id, $title) ";
   }
 
+  /*
+  * Query per selezionare stagioni in join con serie tv
+  * param:
+  * return: query di join tra seasons e series
+  */
+  function seasons_series_join_query(){
+    return "SELECT * FROM tv_series_episodes, tv_series WHERE season_id = id ";
+  }
+
 ?>
