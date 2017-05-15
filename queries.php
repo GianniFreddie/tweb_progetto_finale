@@ -111,7 +111,17 @@
   * return: query di join tra seasons e series
   */
   function seasons_series_join_query(){
-    return "SELECT tv_series_seasons.title as season_title, tv_series.title as title FROM tv_series_seasons, tv_series WHERE serie_id = tv_series.id";
+    return "SELECT tv_series_seasons.id as season_id, tv_series_seasons.title as season_title, tv_series.title as title FROM tv_series_seasons, tv_series WHERE serie_id = tv_series.id";
+  }
+
+  /*
+  * Query per inserire una nuova puntata
+  * param: $season_id, l'id della stagione
+  * param: $title, titolo dell'episodio
+  * param: $duration, durata dell'episodio in minuti
+  */
+  function insert_episode_query($season_id, $title, $duration, $episode_order){
+    return "INSERT INTO tv_series_episodes (season_id, title, duration, episode_order) VALUES ($season_id, $title, $duration, $episode_order)";
   }
 
 ?>
