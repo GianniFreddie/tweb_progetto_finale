@@ -53,7 +53,7 @@
   * return: [PDOStatement] di tutte le puntate associate al telefilm
   */
   function tv_series_episodes($serie_id) {
-    return "SELECT * FROM tv_series_episodes WHERE season_id IN ({tv_series_seasons($serie_id)})";
+    return "SELECT * FROM tv_series_episodes WHERE season_id IN (SELECT id FROM tv_series_seasons WHERE serie_id = $serie_id)";
   }
 
   /*
