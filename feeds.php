@@ -1,5 +1,6 @@
 <?
   session_start();
+  include('queries.php');
   include 'utilities.php';
 ?>
 <!DOCTYPE html>
@@ -15,6 +16,12 @@
     <? require('navbar.html'); ?>
     <div class="container">
       <? require('sidebar_info.php'); ?>
+      <div class="main-content">
+        <p>ciao</p>
+        <p>ciao</p>
+        <p>ciao</p>
+        <p>ciao</p>
+      </div>
     </div>
     <script src="/tweb_progetto_finale/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

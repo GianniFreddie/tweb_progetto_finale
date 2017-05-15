@@ -1,5 +1,6 @@
 <?
 	//includo utility dove c'e funzione che registra nuovo user
+	include 'queries.php'
 	include 'utilities.php';
 	$there_are_parameters = !empty($_REQUEST['nickname']) && !empty($_REQUEST['email']) && !empty($_REQUEST['psw']);
 	$result = NULL;
