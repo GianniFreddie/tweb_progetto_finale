@@ -6,8 +6,29 @@
 #did_watch_droppable {
   background-color: #FFA500;
   height: 100%;
-  width: 40px;
+  width: 5%;
   position: absolute;
-  top: 8%;
-  display: none;
+  top: 80px;
+  display:none;
+}
+
+#watching_droppable {
+  width: 90%;
+  height: 40px;
+  position: absolute;
+  top: 80px;
+  left: 5%;
+  right: 5%;
+  background-color: #7FFFD4;
+  display:none;
+}
+
+#wish_to_watch {
+  background-color: #FFFF99;
+  height: 100%;
+  width: 5%;
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  display:none;
 }
