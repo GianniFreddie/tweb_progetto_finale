@@ -2,3 +2,12 @@
   height: 200px;
   width: 200px;
 }
+
+#did_watch_droppable {
+  background-color: #FFA500;
+  height: 100%;
+  width: 40px;
+  position: absolute;
+  top: 8%;
+  display: none;
+}
