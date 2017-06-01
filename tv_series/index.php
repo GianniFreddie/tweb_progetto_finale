@@ -30,7 +30,7 @@
         <? if($tv_series && $tv_series->rowCount() > 0){ ?>
           <? $count = 0 ?>
           <? foreach($tv_series as $telefilm){ ?>
-            <div class = "telefilm-info" id="telefilm_<?=$count?>">
+            <div class = "telefilm-info" id="telefilm_<?=$count?>" data-tv-serie-id = "<?= $telefilm["id"]?>" data-current-user-id = "<?= $_SESSION["current_user_id"] ?>">
               <h3><?= $telefilm["title"] ?></h3>
               <img src="<?= $telefilm['cover_image'] ?>" alt="Gotham cover image">
               <p>Numero di stagioni: <?= number_of_seasons($telefilm["id"]) ?></p>

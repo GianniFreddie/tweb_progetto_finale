@@ -136,7 +136,7 @@
   * param: action, azione eseguita -> ["watched", "watching", "wish"]
   * return:
   */
-  function watched_create($tv_serie_id, $user_id, $action){
+  function users_tvseries_create($tv_serie_id, $user_id, $action){
     try{
       $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

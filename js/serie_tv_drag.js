@@ -39,8 +39,10 @@ function telefilm_drag_ended(draggable_obj, mouse_event){
 //funzione richiamata quando "poso" il div draggable sul div drop did watch(sx arancio)
 function telefilm_drop_did_watch(element){
   element.hide();
+  var serie_tv_id = element.readAttribute('data-tv-serie-id');
+  var user_id = element.readAttribute('data-current-user-id');
   //ajax
-  new Ajax.Request('localhost:3005/tweb_progetto_finale/api/series_watched.php', {
+  new Ajax.Request('http://localhost:3005/tweb_progetto_finale/api/series_watched.php?tv_serie_id='+serie_tv_id+'&user_id='+user_id, {
     method: 'post',
     onSuccess: did_watch_save_success,
     onFailure: ajax_failure_handler
@@ -50,17 +52,41 @@ function telefilm_drop_did_watch(element){
 //funzione richiamata quando poso draggable su div droppable watching(in alto verde)
 function telefilm_drop_watching(element) {
   element.hide();
+  var serie_tv_id = element.readAttribute('data-tv-serie-id');
+  var user_id = element.readAttribute('data-current-user-id');
+  //ajax
+  new Ajax.Request('http://localhost:3005/tweb_progetto_finale/api/series_watching.php?tv_serie_id='+serie_tv_id+'&user_id='+user_id, {
+    method: 'post',
+    onSuccess: watcing_save_success,
+    onFailure: ajax_failure_handler
+  });
 }
 
 //funzione richiamata quando poso draggable su div droppable wish to watch
 function telefilm_drop_wish(element) {
   element.hide();
+  var serie_tv_id = element.readAttribute('data-tv-serie-id');
+  var user_id = element.readAttribute('data-current-user-id');
+  //ajax
+  new Ajax.Request('http://localhost:3005/tweb_progetto_finale/api/series_wish.php?tv_serie_id='+serie_tv_id+'&user_id='+user_id, {
+    method: 'post',
+    onSuccess: wish_save_success,
+    onFailure: ajax_failure_handler
+  });
 }
 
 function did_watch_save_success(transport){
+  console("Saved did watch");
+}
 
+function watcing_save_success(transport){
+  console("Saved watching");
+}
+
+function wish_save_success(transport){
+  console("Saved wish");
 }
 
 function ajax_failure_handler() {
-
+  console.log("AJAX ERROR");
 }
