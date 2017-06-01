@@ -124,4 +124,14 @@
     return "INSERT INTO tv_series_episodes (season_id, title, duration, episode_order) VALUES ($season_id, $title, $duration, $episode_order)";
   }
 
+  /*
+  * Query per inserire un nuovo record nella tabella users_tvseries
+  * param: tv_serie_id: id della serie tv da aggiungere
+  * param: user_id: id dell'user che ha compiuto l'azione
+  * param: action -> ["watched", "watching", "wish"]
+  */
+  function insert_into_users_tvseries_query($tv_serie_id, $user_id, $action){
+    return "INSERT INTO users_tvseries (user_id, tv_series_id, type) VALUES ($user_id, $tv_serie_id, $action)";
+  }
+
 ?>
