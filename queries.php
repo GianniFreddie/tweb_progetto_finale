@@ -35,7 +35,7 @@
   * return: query che lista tutte le serie tv presenti nel db
   */
   function tv_series_index_query(){
-    return "SELECT * FROM tv_series";
+    return "SELECT * FROM tv_series ORDER BY RAND()";
   }
 
   /*
