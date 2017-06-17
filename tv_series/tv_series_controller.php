@@ -129,4 +129,45 @@
     }
   }
 
+  /*
+  * Funzione per salvare nuovo record nella tabella users_tvseries, richiamata da api ajax
+  * param: tv_serie_id, l'id della serie tv da salvare come watched
+  * param: user_id, l'id dello user che ha compiuto l'azione
+  * param: action, azione eseguita -> ["watched", "watching", "wish"]
+  * return:
+  */
+  function users_tvseries_create($tv_serie_id, $user_id, $action){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $action_flag = -1;
+      /*
+      * 0-> watched
+      * 1-> watching
+      * 2-> wish
+      */
+      switch($action){
+        case "watched":
+          $action_flag = 0;
+          break;
+        case "watching":
+          $action_flag = 1;
+          break;
+        case "wish":
+          $action_flag = 2;
+          break;
+      }
+      $insert_query = insert_into_users_tvseries_query($tv_serie_id, $user_id, $action_flag);
+      $result = $db->query($insert_query);
+      return $result;
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
+  /*
+  *
+  */
+
 ?>
