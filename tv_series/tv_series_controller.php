@@ -167,7 +167,24 @@
   }
 
   /*
-  *
+  * Funzione per determinare se l'user di cui si passa l'id
+  * univoco ha guardato o sta guardando o vuole guardare la serie tv
+  * indicata da id
+  * param: serie_id, l'id della serie_tv da controllare
+  * param: user_id, l'id dell'user di cui controllare il legame con la serie tv
+  * return: 0-> l'eventuale PDOStatement trovato nella tabella users_series_tv
   */
+  function users_tvseries_search($tv_serie_id, $user_id){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $search_query = search_by_ids_users_tv_series($tv_serie_id, $user_id);
+      $result = $db->query($search_query);
+      return $result;
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
 
 ?>

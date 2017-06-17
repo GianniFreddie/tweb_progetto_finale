@@ -30,8 +30,25 @@
         <? if($tv_series && $tv_series->rowCount() > 0){ ?>
           <? $count = 0 ?>
           <? foreach($tv_series as $telefilm){ ?>
-            <!-- add class watched watching or wish to telefilm info -->
-            <div class = "telefilm-info" id="telefilm_<?=$count?>" data-tv-serie-id = "<?= $telefilm["id"]?>" data-current-user-id = "<?= $_SESSION["current_user_id"] ?>">
+            <!-- concatena alla classe base dei div telefilm info le classi per capire se è un telefilm già visto ecc... -->
+            <?
+              $telefilm_info_class = "telefilm-info";
+              $users_tvseries_search_result = users_tvseries_search($telefilm["id"], $_SESSION["current_user_id"]);
+              if($users_tvseries_search_result->rowCount() > 0) {
+                switch ($users_tvseries_search_result->fetch()["type"]) {
+                  case 0:// watching
+                    $telefilm_info_class = $telefilm_info_class . " tv_serie_watched";
+                  break;
+                  case 1:
+                    $telefilm_info_class = $telefilm_info_class . " tv_serie_watching";
+                  break;
+                  case 2 :
+                    $telefilm_info_class = $telefilm_info_class . " tv_serie_wish";
+                  break;
+                }
+              }
+            ?>
+            <div class = "<?= $telefilm_info_class ?>" id="telefilm_<?=$count?>" data-tv-serie-id = "<?= $telefilm["id"]?>" data-current-user-id = "<?= $_SESSION["current_user_id"] ?>">
               <h3><?= $telefilm["title"] ?></h3>
               <img src="<?= $telefilm['cover_image'] ?>" alt="Gotham cover image">
               <p>Numero di stagioni: <?= number_of_seasons($telefilm["id"]) ?></p>
