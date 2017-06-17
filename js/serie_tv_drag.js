@@ -34,7 +34,7 @@ function telefilm_drag_ended(draggable_obj, mouse_event){
   $('did_watch_droppable').hide();
   $('watching_droppable').hide();
   $('wish_to_watch').hide();
-  
+
 }
 
 //funzione richiamata quando "poso" il div draggable sul div drop did watch(sx arancio)
