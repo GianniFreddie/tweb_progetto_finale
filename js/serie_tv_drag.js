@@ -18,7 +18,7 @@ document.observe("dom:loaded", function() {
   });
   //inizializza draggable
   $$('.telefilm-info').each(function(telefilm_div) {
-    var telefilm_draggable_div = new Draggable(telefilm_div.id, { ghosting: true, onStart: telefilm_drag_started, onEnd: telefilm_drag_ended });
+    var telefilm_draggable_div = new Draggable(telefilm_div.id, {ghosting: true, onStart: telefilm_drag_started, onEnd: telefilm_drag_ended, scroll: window });
   });
 });
 
@@ -34,6 +34,7 @@ function telefilm_drag_ended(draggable_obj, mouse_event){
   $('did_watch_droppable').hide();
   $('watching_droppable').hide();
   $('wish_to_watch').hide();
+  
 }
 
 //funzione richiamata quando "poso" il div draggable sul div drop did watch(sx arancio)
@@ -76,15 +77,15 @@ function telefilm_drop_wish(element) {
 }
 
 function did_watch_save_success(transport){
-  console("Saved did watch");
+  console.log("Saved did watch");
 }
 
 function watcing_save_success(transport){
-  console("Saved watching");
+  console.log("Saved watching");
 }
 
 function wish_save_success(transport){
-  console("Saved wish");
+  console.log("Saved wish");
 }
 
 function ajax_failure_handler() {
