@@ -18,7 +18,7 @@ document.observe("dom:loaded", function() {
   });
   //inizializza draggable
   $$('.telefilm-info').each(function(telefilm_div) {
-    var telefilm_draggable_div = new Draggable(telefilm_div.id, {ghosting: true, onStart: telefilm_drag_started, onEnd: telefilm_drag_ended, scroll: window });
+    var telefilm_draggable_div = new Draggable(telefilm_div.id, {ghosting: true, onStart: telefilm_drag_started, onEnd: telefilm_drag_ended, scroll: window, revert: 'failure' });
   });
 });
 
