@@ -50,9 +50,28 @@
             ?>
             <div class = "<?= $telefilm_info_class ?>" id="telefilm_<?=$count?>" data-tv-serie-id = "<?= $telefilm["id"]?>" data-current-user-id = "<?= $_SESSION["current_user_id"] ?>">
               <h3><?= $telefilm["title"] ?></h3>
-              <img src="<?= $telefilm['cover_image'] ?>" alt="Gotham cover image">
-              <p>Numero di stagioni: <?= number_of_seasons($telefilm["id"]) ?></p>
-              <p>Numero di episodi: <?= number_of_episodes($telefilm["id"]) ?></p>
+              <img src="<?= $telefilm['cover_image'] ?>" alt="Tv serie cover image">
+              <p>
+                <? 
+                  $number_of_seasons = number_of_seasons($telefilm["id"]);
+                  //per ogni stagione aggiungi link alla lista delle puntate della stagione, forma di button
+                  for($i = 0; $i < $number_of_seasons; $i++) {
+                ?>
+                  <a href="#" class="btn btn-primary btn-sm">S0<?=$i?></a>
+                <?
+                  }
+                ?> 
+              </p>
+              <p>
+                <?
+                  $number_of_episodes = number_of_episodes($telefilm["id"]);
+                  for($i = 0; $i < $number_of_episodes; $i++){
+                ?>
+                  <a href="#" class="btn btn-secondary btn-sm">E0<?=$i?></a>
+                <?
+                  }
+                ?>
+              </p>
             </div>
             <? $count++ ?>
           <? } ?>
