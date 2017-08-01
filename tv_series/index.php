@@ -56,19 +56,31 @@
                   $number_of_seasons = number_of_seasons($telefilm["id"]);
                   //per ogni stagione aggiungi link alla lista delle puntate della stagione, forma di button
                   for($i = 0; $i < $number_of_seasons; $i++) {
+                    if($i < 10) {
                 ?>
                   <a href="#" class="btn btn-primary btn-sm">S0<?=$i?></a>
                 <?
-                  }
+                    }else{
                 ?> 
+                  <a href="#" class="btn btn-primary btn-sm">S<?=$i?></a>
+                <?
+                    }
+                  }
+                ?>
               </p>
               <p>
                 <?
                   $number_of_episodes = number_of_episodes($telefilm["id"]);
                   for($i = 0; $i < $number_of_episodes; $i++){
+                    if($i < 10) {
                 ?>
                   <a href="#" class="btn btn-secondary btn-sm">E0<?=$i?></a>
                 <?
+                    }else{
+                ?>
+                  <a href="#" class="btn btn-secondary btn-sm">E<?=$i?></a>
+                <?
+                    }
                   }
                 ?>
               </p>
