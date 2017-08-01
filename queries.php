@@ -134,4 +134,15 @@
     return "INSERT INTO users_tvseries (user_id, tv_series_id, type) VALUES ($user_id, $tv_serie_id, $action)";
   }
 
+  /*
+  * Query di ricerca record specifico nella tabella users tv series, tabella di collegamento,
+  * passando l'id della serie e l'id dell'utente
+  * param: serie_id, l'id della serie
+  * param: user_id, l'id dell'user
+  * return: query di ricerca singolo record nella tabella users tv series
+  */
+  function search_by_ids_users_tv_series($tv_serie_id, $user_id){
+    return "SELECT * FROM users_tvseries WHERE user_id = $user_id && tv_series_id = $tv_serie_id";
+  }
+
 ?>

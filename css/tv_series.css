@@ -13,8 +13,8 @@
 
 #watching_droppable {
   width: 90%;
-  height: 40px;
-  position: absolute;
+  height: 60px;
+  position: relative;
   top: 80px;
   left: 5%;
   right: 5%;
@@ -31,7 +31,13 @@
 }
 
 .tv_serie_watched {
-  height: 200px;
-  width: 200px;
   background-color: #FFA500;
+}
+
+.tv_serie_watching {
+  background-color: #7FFFD4;
+}
+
+.tv_serie_wish {
+  background-color: #FFFF99;
 }
