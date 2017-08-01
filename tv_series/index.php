@@ -97,5 +97,6 @@
     <script src="/tweb_progetto_finale/scriptaculous/lib/prototype.js"></script>
     <script src="/tweb_progetto_finale/scriptaculous/src/scriptaculous.js"></script>
     <script src="/tweb_progetto_finale/js/serie_tv_drag.js"></script>
+    <script src="/tweb_progetto_finale/js/tv_series_index.js"></script>
   </body>
 </html>
