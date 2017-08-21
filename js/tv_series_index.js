@@ -1,8 +1,7 @@
-document.observe("dom:loaded", function() {
-	$(".telefilm-info").each(function())
-});
+var $j = jQuery.noConflict(); //evita conflitto con scriptcolous
 
-//click handler
-function goToSerieShow(event) {
-	console.log("Ciao");
-}
+$j(document).ready(function() {
+	$j('.telefilm-info').on('click', function() {
+		console.log("Ciao");
+	});
+});
