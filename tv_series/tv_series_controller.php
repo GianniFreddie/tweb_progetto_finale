@@ -187,4 +187,22 @@
     }
   }
 
+  /*
+  * Funzione di get della singola serie tv passando l'id
+  * param: id, identificativo univoco della serie tv
+  * return: PDOStatement della serie tv eventualmente trovata
+  */
+  function get_tv_serie($id){
+    try{
+      $db = new PDO('mysql:host=localhost;dbname=progettoFinale_develop', 'root', '');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $get_query = get_tv_serie_by_id($id);
+      $result = $db->query($get_query);
+      return $result;
+    }catch(PDOException $e){
+      return($e->getMessage());
+      die();
+    }
+  }
+
 ?>

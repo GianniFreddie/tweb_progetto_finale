@@ -145,4 +145,12 @@
     return "SELECT * FROM users_tvseries WHERE user_id = $user_id && tv_series_id = $tv_serie_id";
   }
 
+  /*
+  * Query di get del singolo record di serie_tv
+  * param: id della serie tv
+  */
+  function get_tv_serie_by_id($tv_serie_id){
+    return "SELECT * FROM `tv_series` WHERE id = $tv_serie_id";
+  }
+
 ?>
