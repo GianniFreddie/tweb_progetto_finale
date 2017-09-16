@@ -35,6 +35,9 @@
         <input type="text" class = "form-control" name = "title" placeholder = "Titolo" />
       </div>
       <div class="form-group">
+        <label for="desxription">Descrizione</label>
+        <textarea class = "form-control" name="description" placeholder= "Descrizione" rows="10"></textarea>
+      <div class="form-group">
         <label for="cover_image">Seleziona l'immagine di copertina</label>
         <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
         <input type="file" class = "form-control" name = "cover_image" />

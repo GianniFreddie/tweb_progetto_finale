@@ -1,0 +1,28 @@
+.sidebar{
+	background-color: #495469;
+	position: absolute;
+	height: 100%;
+	width: 15%;
+	padding: 5px;
+}
+
+.sidebar a {
+	display: block;
+	color: #FFFFFF;
+	font-size: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.sidebar img {
+	height: 70px;
+	width: 70px;
+}
+
+.sidebar h2 {
+	color: #FFFFFF;
+}
+
+.sidebar .title{
+	margin-bottom: 40px;
+}

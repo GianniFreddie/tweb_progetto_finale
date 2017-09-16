@@ -6,11 +6,11 @@
   <head>
     <title>Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name = "author" content = "Testa Giovanni MATR:777810" />
+    <meta name = "author" content = "Testa Giovanni MATR:777810" />
+    <link rel = "stylesheet" href = "/tweb_progetto_finale/bootstrap/css/bootstrap.css" />
+    <link rel = "stylesheet" href = "/tweb_progetto_finale/css/backend/sidebar.css" />
   </head>
   <body>
-    <a href = "/tweb_progetto_finale/tv_series/form.php" >Tv Series</a>
-    <a href = "/tweb_progetto_finale/tv_series_seasons/form.php" >Tv Series seasons</a>
-    <a href = "/tweb_progetto_finale/tv_series_episodes/form.php" >Tv Series episodes </a>
+    <? require('sidebar.html'); ?>
   </body>
 </html>
